@@ -2,7 +2,9 @@
   "name": "x-dm-saas",
   "version": "1.0.0",
   "dependencies": {
-    "@tailwindcss/postcss": "^4.1.13"
+    "@supabase/supabase-js": "^2.57.4",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@vercel/speed-insights": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
