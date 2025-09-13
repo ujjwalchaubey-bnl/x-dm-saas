@@ -1,0 +1,115 @@
+{
+    "info": {
+      "name": "xOutreach Backend API",
+      "_postman_id": "c0a1b27a-1234-5678-9101-backendapi",
+      "description": "Collection to test xOutreach backend APIs",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Root Check",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:5000/",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": [""]
+          }
+        }
+      },
+      {
+        "name": "Signup",
+        "request": {
+          "method": "POST",
+          "header": [{ "key": "Content-Type", "value": "application/json" }],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/api/auth/signup",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["api", "auth", "signup"]
+          }
+        }
+      },
+      {
+        "name": "Login",
+        "request": {
+          "method": "POST",
+          "header": [{ "key": "Content-Type", "value": "application/json" }],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/api/auth/login",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["api", "auth", "login"]
+          }
+        }
+      },
+      {
+        "name": "Get Profile",
+        "request": {
+          "method": "GET",
+          "header": [
+            { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+          ],
+          "url": {
+            "raw": "http://localhost:5000/api/auth/profile",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["api", "auth", "profile"]
+          }
+        }
+      },
+      {
+        "name": "Get Campaigns",
+        "request": {
+          "method": "GET",
+          "header": [
+            { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+          ],
+          "url": {
+            "raw": "http://localhost:5000/api/campaigns",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["api", "campaigns"]
+          }
+        }
+      },
+      {
+        "name": "Get Leads",
+        "request": {
+          "method": "GET",
+          "header": [
+            { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+          ],
+          "url": {
+            "raw": "http://localhost:5000/api/leads",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["api", "leads"]
+          }
+        }
+      }
+    ],
+    "variable": [
+      {
+        "key": "token",
+        "value": ""
+      }
+    ]
+  }
+  

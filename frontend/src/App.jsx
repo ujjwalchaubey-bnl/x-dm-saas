@@ -1,43 +1,51 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider, useAuth } from "./context/AuthProvider";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthProvider";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/ForgotPassword";
-import Home from "./pages/Home";
 
-// Protected Route Component
-function ProtectedRoute({ children }) {
-  const { user, loading } = useAuth();
-
-  if (loading) return <p>Loading...</p>;
-  if (!user) return <Navigate to="/login" replace />;
-
-  return children;
-}
+// Dashboard pages
+import Dashboard from "./pages/Dashboard";
+import Campaigns from "./pages/dashboard/Campaigns";
+import Leads from "./pages/dashboard/Leads";
+import Templates from "./pages/dashboard/Templates";
+import Billing from "./pages/dashboard/Billing";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          {/* Home Page */}
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
-
-          {/* Auth Pages */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
-          {/* Protected Page */}
+          {/* Protected Dashboard Routes */}
           <Route
-            path="/dashboard"
+            path="/dashboard/*"
             element={
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
             }
-          />
+          >
+            {/* Independent sections */}
+            <Route path="campaigns" element={<Campaigns />} />
+            <Route path="leads" element={<Leads />} />
+            <Route path="templates" element={<Templates />} />
+            <Route path="billing" element={<Billing />} />
+
+            {/* Default landing page */}
+            <Route index element={<Campaigns />} />
+          </Route>
+
+          {/* Fallback */}
+          <Route path="*" element={<Login />} />
         </Routes>
       </Router>
     </AuthProvider>
