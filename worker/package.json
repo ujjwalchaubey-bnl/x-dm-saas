@@ -1,0 +1,19 @@
+{
+  "name": "dm-worker",
+  "version": "1.0.0",
+  "description": "Automated DM worker for X.com",
+  "main": "sendDMWorker.js",
+  "type": "module",
+  "scripts": {
+    "start": "node sendDMWorker.js",
+    "dev": "node sendDMWorker.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "dotenv": "^17.2.2",
+    "playwright": "^1.55.0"
+  },
+  "keywords": ["twitter", "x.com", "dm", "automation", "worker"],
+  "author": "",
+  "license": "MIT"
+}

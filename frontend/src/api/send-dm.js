@@ -1,6 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
 
-// Create Supabase client (server-side, use service_role key later)
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -12,9 +11,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { user_id, campaign_id, message, recipient } = req.body;
+    const { user_id, campaign_id, message, recipient_handle } = req.body;
 
-    if (!user_id || !campaign_id || !message || !recipient) {
+    if (!user_id || !campaign_id || !message || !recipient_handle) {
       return res.status(400).json({ error: "Missing fields" });
     }
 
@@ -36,9 +35,11 @@ export default async function handler(req, res) {
       {
         user_id,
         campaign_id,
-        message,
-        recipient,
+        recipient_handle,
         status: "pending",
+        sent_at: new Date().toISOString(),
+        // optional: store message if you ALTER TABLE to add `message`
+        message
       },
     ]);
 

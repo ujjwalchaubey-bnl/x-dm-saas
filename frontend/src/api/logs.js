@@ -23,9 +23,7 @@ export default async function handler(req, res) {
       query = query.eq("campaign_id", campaign_id);
     }
 
-    const { data, error } = await query.order("created_at", {
-      ascending: false,
-    });
+    const { data, error } = await query.order("sent_at", { ascending: false });
 
     if (error) throw error;
 

@@ -2,46 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* ✅ Reset default margins */
+html,
+body,
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb; /* light background */
+  color: #111827; /* dark gray text */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ✅ Utility overrides */
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ✅ Navbar styling */
+.nav-link {
+  @apply text-gray-600 hover:text-blue-600 font-medium transition;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.nav-link-active {
+  @apply text-blue-600 font-semibold;
 }
 
+/* ✅ Buttons */
+.btn-primary {
+  @apply px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md font-medium hover:bg-blue-700 transition;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-gray-200 text-gray-800 rounded-lg shadow-md font-medium hover:bg-gray-300 transition;
+}
+
+/* ✅ Cards */
 .card {
-  padding: 2em;
+  @apply bg-white rounded-2xl shadow p-6 hover:shadow-lg transition;
 }
 
-.read-the-docs {
-  color: #888;
+/* ✅ Headings */
+h1,
+h2,
+h3,
+h4 {
+  @apply font-bold text-gray-900;
 }
